@@ -94,22 +94,22 @@ var S=[
   pat:"<b>ESE: 30 marks · 1 hour.</b> Section A: answer 2 of 3 (5 marks each). Section B: one 20-mark case study.",
   u:[["u1","Unit I","Risky investment decisions"],["u2","Unit II","Dividend theory & policy"],["u3","Unit III","Working capital finance"],["u4","Unit IV","Leasing & hire purchase"],["u5","Unit V","Value-based management"]],
   q:[["course","Handout problems solved",1],["cases","20-mark cases",1],["extra","5-mark numericals"],["mcq","MCQs"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
- {f:"01-bond-market-operations-and-analytics.html",t:"Bond Market Operations & Analytics",k:"bmoa",code:"BBA303F-5",c:"#0f766e",
+ {f:"01-bond-market-operations-and-analytics.html",t:"Bond Market Operations & Analytics",k:"bmoa",code:"BBA303F-5",c:"#0f766e",date:"2026-10-09",tm:"1:30 PM",
   pat:"<b>ESE: 50 marks.</b> A: 3×5 · B: 2×10 · C: one 15-mark case (a/b choice in A and B). Duration not stated; the mid-sem was 2 hours.",
   u:[["u1","Unit 1","Foundations of bond markets"],["u2","Unit 2","Bond valuation maths"],["u3","Unit 3","Yield curve analytics"],["u4","Unit 4","Bond portfolio strategy"],["u5","Unit 5","Sustainability & innovation"]],
   q:[["past-papers","Mid-sem paper solved",1],["solved","Course problems solved"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
- {f:"02-security-analysis-and-portfolio-management.html",t:"Security Analysis & Portfolio Management",k:"sapm",code:"SAPM",c:"#c2410c",
+ {f:"02-security-analysis-and-portfolio-management.html",t:"Security Analysis & Portfolio Management",k:"sapm",code:"BBA301F-5",c:"#c2410c",date:"2026-10-07",tm:"1:30 PM",
   pat:"<b>ESE: 50 marks, scaled to 30.</b> A: 3×5 · B: 2×10 · C: one 15-mark case. About 40 marks come from Units 4–5.",
   u:[["u1","Unit 1","Intro to equity investments"],["u2","Unit 2","Fundamental analysis"],["u3","Unit 3","Technical analysis"],["u4","Unit 4","Equity valuation"],["u5","Unit 5","Portfolio management & evaluation"]],
   q:[["course","Course questions solved",1],["past-papers","CIA-style practice"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
- {f:"03-sustainable-finance.html",t:"Sustainable Finance",k:"sf",code:"BBA304F-5",c:"#15803d",
+ {f:"03-sustainable-finance.html",t:"Sustainable Finance",k:"sf",code:"BBA304F-5",c:"#15803d",date:"2026-10-12",tm:"1:30 PM",
   pat:"<b>Mid-sem pattern: 50 marks · 2 hours.</b> A: 3×5 · B: 2×10 · C: 15-mark case. Take a clear stance in long answers: the marking scheme caps answers without one.",
   u:[["u1","Unit 1","Intro to sustainable finance"],["u2","Unit 2","CSR-ESG & climate change"],["u3","Unit 3","Products & instruments"],["u4","Unit 4","Risk, reporting & future"],["u5","Unit 5","Case studies"]],
   q:[["past-papers","Mid-sem paper solved",1],["source-solved","Course questions solved"],["bank","Question bank"],["formulas","Tools sheet"],["cheat","Cheat sheet",1]]},
- {f:"04-taxation-laws-and-practice.html",t:"Taxation Laws & Practice",k:"tax",code:"BBA303-5",c:"#1d4ed8",
+ {f:"04-taxation-laws-and-practice.html",t:"Taxation Laws & Practice",k:"tax",code:"BBA303-5",c:"#1d4ed8",date:"2026-10-05",tm:"1:30 PM",
   pat:"<b>ESE: 50 marks · 2 hours.</b> A: 3×5 · B: 2×10 · C: one 15-mark case. PY 2025-26 / AY 2026-27, new regime.",
   u:[["unit1","Unit I","Basics & residential status"],["unit2","Unit II","Income from salary"],["unit3","Unit III","House property & business"],["unit4","Unit IV","Capital gains & other sources"],["unit5","Unit V","Tax liability & filing"]],
-  q:[["law-note","Read first: law & year"],["course-solved","All 24 course problems",1],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet + slabs",1]]}
+  q:[["past-paper","Last year's paper solved",1],["law-note","Read first: law & year"],["course-solved","All 24 course problems"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet + slabs",1]]}
 ];
 function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -118,14 +118,14 @@ function cdText(n){if(n===null)return "";if(n<0)return "done";if(n===0)return "t
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 var grid=document.getElementById("grid");
 function render(){
-  S.forEach(function(s){s.d=get("hub-date-"+s.k)||s.date||""});
+  S.forEach(function(s){s.d=get("hub-date2-"+s.k)||s.date||""});
   var order=S.slice().sort(function(a,b){var x=days(a.d),y=days(b.d);x=(x===null||x<0)?1e6:x;y=(y===null||y<0)?1e6:y;return x-y});
   grid.innerHTML="";
   order.forEach(function(s){
     var el=document.createElement("article");el.className="card";el.style.setProperty("--c",s.c);
     var h='<div class="card-h"><div><div class="code">'+s.code+'</div><h2><a href="'+s.f+'">'+esc(s.t)+'</a></h2></div><a class="open" href="'+s.f+'">Open guide &rarr;</a></div>';
     h+='<div class="pattern">'+s.pat+'</div>';
-    h+='<label class="date">Exam date <input type="date" value="'+s.d+'" data-k="'+s.k+'"> <span class="cd">'+cdText(days(s.d))+'</span></label>';
+    h+='<label class="date">Exam date <input type="date" value="'+s.d+'" data-k="'+s.k+'"> <span class="cd">'+cdText(days(s.d))+(s.d&&s.tm&&!get("hub-date2-"+s.k)?' · '+s.tm:'')+'</span></label>';
     h+='<ul class="units">';
     s.u.concat([["__pp","Practice","Past papers / course problems done"],["__cs","Revise","Cheat sheet read on exam eve"]]).forEach(function(u){
       var key="hub-"+s.k+"-"+u[0],on=get(key)==="1";
@@ -138,12 +138,12 @@ function render(){
   });
   var up=order.filter(function(s){var n=days(s.d);return n!==null&&n>=0});
   var nx=document.getElementById("next");
-  nx.innerHTML=up.length?up.slice(0,3).map(function(s){return '<span class="pill"><b>'+esc(s.t)+'</b> &middot; '+cdText(days(s.d))+'</span>'}).join(""):'<span class="pill">Add your exam dates on each card to see a countdown here.</span>';
+  nx.innerHTML=up.length?up.slice(0,5).map(function(s){return '<span class="pill"><b>'+esc(s.t)+'</b> &middot; '+cdText(days(s.d))+'</span>'}).join(""):'<span class="pill">Add your exam dates on each card to see a countdown here.</span>';
 }
 function prog(card){var b=card.querySelectorAll(".units input"),n=0;b.forEach(function(x){if(x.checked)n++});var p=Math.round(100*n/b.length);card.querySelector(".bar i").style.width=p+"%";card.querySelector(".pc").textContent=n+" of "+b.length+" · "+p+"%"}
 grid.addEventListener("change",function(e){var t=e.target;
   if(t.dataset.key){put(t.dataset.key,t.checked?"1":"0");t.closest("li").classList.toggle("done",t.checked);prog(t.closest(".card"))}
-  if(t.dataset.k){put("hub-date-"+t.dataset.k,t.value);render()}
+  if(t.dataset.k){put("hub-date2-"+t.dataset.k,t.value);render()}
 });
 render();
 </script>
