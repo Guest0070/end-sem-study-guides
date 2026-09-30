@@ -109,7 +109,7 @@ var S=[
  {f:"04-taxation-laws-and-practice.html",t:"Taxation Laws & Practice",k:"tax",code:"BBA303-5",c:"#1d4ed8",date:"2026-10-05",tm:"1:30 PM",
   pat:"<b>ESE: 50 marks · 2 hours.</b> A: 3×5 · B: 2×10 · C: one 15-mark case. PY 2025-26 / AY 2026-27, new regime.",
   u:[["unit1","Unit I","Basics & residential status"],["unit2","Unit II","Income from salary"],["unit3","Unit III","House property & business"],["unit4","Unit IV","Capital gains & other sources"],["unit5","Unit V","Tax liability & filing"]],
-  q:[["past-paper","Last year's paper solved",1],["law-note","Read first: law & year"],["course-solved","All 24 course problems"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet + slabs",1]]}
+  q:[["practice-04-taxation-laws-and-practice.html","Practice by unit (212 Qs)",1],["past-paper","Last year's paper solved",1],["law-note","Read first: law & year"],["course-solved","All 24 course problems"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet + slabs",1]]}
 ];
 function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -129,11 +129,11 @@ function render(){
     h+='<ul class="units">';
     s.u.concat([["__pp","Practice","Past papers / course problems done"],["__cs","Revise","Cheat sheet read on exam eve"]]).forEach(function(u){
       var key="hub-"+s.k+"-"+u[0],on=get(key)==="1";
-      var href=u[0]==="__pp"?(s.f+"#"+s.q[0][0]):u[0]==="__cs"?(s.f+"#cheat"):(s.f+"#"+u[0]);
+      var href=u[0]==="__pp"?(s.q[0][0].indexOf(".html")>-1?s.q[0][0]:s.f+"#"+s.q[0][0]):u[0]==="__cs"?(s.f+"#cheat"):(s.f+"#"+u[0]);
       h+='<li class="'+(on?"done":"")+'"><input type="checkbox" aria-label="Mark '+esc(u[2])+' done" data-key="'+key+'"'+(on?" checked":"")+'><span class="n">'+u[1]+'</span><a href="'+href+'">'+esc(u[2])+'</a></li>';
     });
     h+='</ul><div><div class="prog"><span>Progress</span><span class="pc"></span></div><div class="bar"><i></i></div></div>';
-    h+='<div class="quick">'+s.q.map(function(q){return '<a'+(q[2]?' class="hot"':'')+' href="'+s.f+'#'+q[0]+'">'+q[1]+'</a>'}).join("")+'</div>';
+    h+='<div class="quick">'+s.q.map(function(q){return '<a'+(q[2]?' class="hot"':'')+' href="'+(q[0].indexOf('.html')>-1?q[0]:s.f+'#'+q[0])+'">'+q[1]+'</a>'}).join("")+'</div>';
     el.innerHTML=h;grid.appendChild(el);prog(el);
   });
   var up=order.filter(function(s){var n=days(s.d);return n!==null&&n>=0});
