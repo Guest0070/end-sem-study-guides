@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>End-Sem Study Hub</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#141827;--muted:#5b6275;--line:#e3e6ee;--chip:#f0f2f7;--dark:#111827}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1017;--card:#161b26;--ink:#e8ebf2;--muted:#9aa3b5;--line:#262d3b;--chip:#1e2533;--dark:#05070b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.top{background:var(--dark);color:#e5e7eb;padding:28px 16px 30px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.top .wrap{padding:0}
+.eyebrow{font:700 12px/1 system-ui;letter-spacing:.12em;text-transform:uppercase;color:#9ca3af}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:10px 0 8px}
+.lede{color:#c7cbd6;max-width:760px;margin:0}
+.next{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:#1f2937;border:1px solid #374151;border-radius:999px;padding:7px 14px;font-size:14px}
+.pill b{color:#fff}
+main.wrap{padding-top:26px;padding-bottom:40px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:26px}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--muted)}
+.how b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.code{font:700 12px system-ui;color:var(--c);letter-spacing:.04em}
+.card h2{margin:2px 0 0;font-size:21px;line-height:1.2}
+.card h2 a{text-decoration:none}
+.card h2 a:hover{text-decoration:underline}
+.open{flex:none;background:var(--c);color:#fff;text-decoration:none;font:700 14px system-ui;padding:9px 14px;border-radius:10px;white-space:nowrap}
+.pattern{font-size:13.5px;color:var(--muted);background:var(--chip);border-radius:10px;padding:8px 11px}
+.pattern b{color:var(--ink)}
+.date{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+.date input{font:inherit;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.cd{font-weight:700;color:var(--c)}
+.units{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.units li{display:flex;align-items:center;gap:9px;padding:5px 6px;border-radius:8px}
+.units li:hover{background:var(--chip)}
+.units input{width:17px;height:17px;accent-color:var(--c);flex:none}
+.units a{text-decoration:none;font-size:15px}
+.units a:hover{text-decoration:underline}
+.units .n{color:var(--muted);font:700 12px system-ui;width:64px;flex:none;white-space:nowrap}
+.units li.done a{color:var(--muted);text-decoration:line-through}
+.bar{height:8px;background:var(--chip);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--c);transition:width .25s}
+.prog{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.quick{display:flex;flex-wrap:wrap;gap:7px}
+.quick a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--card)}
+.quick a:hover{border-color:var(--c);color:var(--c)}
+.quick a.hot{border-color:var(--c);color:var(--c);font-weight:700}
+.other{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--muted)}
+.other a{color:var(--ink);font-weight:600}
+.warn{margin-top:14px;border-left:4px solid #dc2626;background:#fef2f2;color:#7f1d1d;border-radius:8px;padding:10px 14px;font-size:14px}
+@media (prefers-color-scheme:dark){.warn{background:#2a1215;color:#fecaca}}
+footer{color:var(--muted);font-size:13px;margin-top:26px}
+@media (max-width:600px){.how{grid-template-columns:1fr 1fr;gap:8px}.how div{padding:10px 12px;font-size:13px}}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.card-h{flex-direction:column}.open{align-self:flex-start}}
+@media print{.top{background:none;color:#000}.date input,.open{display:none}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">BBA Finance · Semester V · CHRIST University</div>
+    <h1>End-Semester Study Hub</h1>
+    <p class="lede">Five complete study guides built from your course files. Each one teaches every topic from zero, solves every problem and past-paper question from your course material, and ends with a question bank and a one-page cheat sheet.</p>
+    <div class="next" id="next"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="how" aria-label="How to use">
+    <div><b>1 · Learn a unit</b>Click a unit below. Read it top to bottom and cover each worked example before checking the answer.</div>
+    <div><b>2 · Tick it off</b>Tick the box next to each unit you finish. Progress stays saved in this browser.</div>
+    <div><b>3 · Past papers</b>Solve the past papers and course problems without peeking, then compare with the model answers.</div>
+    <div><b>4 · Exam morning</b>Open the cheat sheet. Every guide has a subject bar at the top to jump between subjects or come back here.</div>
+  </section>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="other">
+    <b style="color:var(--ink)">Other notes in this folder:</b> <a href="05-public-relations-and-corporate-communication.html">Public Relations &amp; Corporate Communication</a>. These are short revision notes carried over from earlier; there were no PR course files in your folder to build a full guide from.
+  </div>
+  <div class="warn"><b>Taxation:</b> the guide uses AY 2026-27 new-regime rates. If your question paper prints different rates or limits, always use the paper's.</div>
+  <footer>Exam dates you enter and units you tick are saved only in this browser on this computer.</footer>
+</main>
+
+<script>
+var S=[
+ {f:"06-strategic-financial-management.html",t:"Strategic Financial Management",k:"sfm",code:"BBA302F-5",c:"#6d28d9",date:"2026-10-03",
+  pat:"<b>ESE: 30 marks · 1 hour.</b> Section A: answer 2 of 3 (5 marks each). Section B: one 20-mark case study.",
+  u:[["u1","Unit I","Risky investment decisions"],["u2","Unit II","Dividend theory & policy"],["u3","Unit III","Working capital finance"],["u4","Unit IV","Leasing & hire purchase"],["u5","Unit V","Value-based management"]],
+  q:[["course","Handout problems solved",1],["cases","20-mark cases",1],["extra","5-mark numericals"],["mcq","MCQs"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
+ {f:"01-bond-market-operations-and-analytics.html",t:"Bond Market Operations & Analytics",k:"bmoa",code:"BBA303F-5",c:"#0f766e",
+  pat:"<b>ESE: 50 marks.</b> A: 3×5 · B: 2×10 · C: one 15-mark case (a/b choice in A and B). Duration not stated; the mid-sem was 2 hours.",
+  u:[["u1","Unit 1","Foundations of bond markets"],["u2","Unit 2","Bond valuation maths"],["u3","Unit 3","Yield curve analytics"],["u4","Unit 4","Bond portfolio strategy"],["u5","Unit 5","Sustainability & innovation"]],
+  q:[["past-papers","Mid-sem paper solved",1],["solved","Course problems solved"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
+ {f:"02-security-analysis-and-portfolio-management.html",t:"Security Analysis & Portfolio Management",k:"sapm",code:"SAPM",c:"#c2410c",
+  pat:"<b>ESE: 50 marks, scaled to 30.</b> A: 3×5 · B: 2×10 · C: one 15-mark case. About 40 marks come from Units 4–5.",
+  u:[["u1","Unit 1","Intro to equity investments"],["u2","Unit 2","Fundamental analysis"],["u3","Unit 3","Technical analysis"],["u4","Unit 4","Equity valuation"],["u5","Unit 5","Portfolio management & evaluation"]],
+  q:[["course","Course questions solved",1],["past-papers","CIA-style practice"],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet",1]]},
+ {f:"03-sustainable-finance.html",t:"Sustainable Finance",k:"sf",code:"BBA304F-5",c:"#15803d",
+  pat:"<b>Mid-sem pattern: 50 marks · 2 hours.</b> A: 3×5 · B: 2×10 · C: 15-mark case. Take a clear stance in long answers: the marking scheme caps answers without one.",
+  u:[["u1","Unit 1","Intro to sustainable finance"],["u2","Unit 2","CSR-ESG & climate change"],["u3","Unit 3","Products & instruments"],["u4","Unit 4","Risk, reporting & future"],["u5","Unit 5","Case studies"]],
+  q:[["past-papers","Mid-sem paper solved",1],["source-solved","Course questions solved"],["bank","Question bank"],["formulas","Tools sheet"],["cheat","Cheat sheet",1]]},
+ {f:"04-taxation-laws-and-practice.html",t:"Taxation Laws & Practice",k:"tax",code:"BBA303-5",c:"#1d4ed8",
+  pat:"<b>ESE: 50 marks · 2 hours.</b> A: 3×5 · B: 2×10 · C: one 15-mark case. PY 2025-26 / AY 2026-27, new regime.",
+  u:[["unit1","Unit I","Basics & residential status"],["unit2","Unit II","Income from salary"],["unit3","Unit III","House property & business"],["unit4","Unit IV","Capital gains & other sources"],["unit5","Unit V","Tax liability & filing"]],
+  q:[["law-note","Read first: law & year"],["course-solved","All 24 course problems",1],["mcq","Question bank"],["formulas","Formula sheet"],["cheat","Cheat sheet + slabs",1]]}
+];
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function days(d){if(!d)return null;var t=new Date();t.setHours(0,0,0,0);var x=new Date(d+"T00:00:00");return Math.round((x-t)/864e5)}
+function cdText(n){if(n===null)return "";if(n<0)return "done";if(n===0)return "today!";if(n===1)return "tomorrow";return "in "+n+" days"}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+var grid=document.getElementById("grid");
+function render(){
+  S.forEach(function(s){s.d=get("hub-date-"+s.k)||s.date||""});
+  var order=S.slice().sort(function(a,b){var x=days(a.d),y=days(b.d);x=(x===null||x<0)?1e6:x;y=(y===null||y<0)?1e6:y;return x-y});
+  grid.innerHTML="";
+  order.forEach(function(s){
+    var el=document.createElement("article");el.className="card";el.style.setProperty("--c",s.c);
+    var h='<div class="card-h"><div><div class="code">'+s.code+'</div><h2><a href="'+s.f+'">'+esc(s.t)+'</a></h2></div><a class="open" href="'+s.f+'">Open guide &rarr;</a></div>';
+    h+='<div class="pattern">'+s.pat+'</div>';
+    h+='<label class="date">Exam date <input type="date" value="'+s.d+'" data-k="'+s.k+'"> <span class="cd">'+cdText(days(s.d))+'</span></label>';
+    h+='<ul class="units">';
+    s.u.concat([["__pp","Practice","Past papers / course problems done"],["__cs","Revise","Cheat sheet read on exam eve"]]).forEach(function(u){
+      var key="hub-"+s.k+"-"+u[0],on=get(key)==="1";
+      var href=u[0]==="__pp"?(s.f+"#"+s.q[0][0]):u[0]==="__cs"?(s.f+"#cheat"):(s.f+"#"+u[0]);
+      h+='<li class="'+(on?"done":"")+'"><input type="checkbox" aria-label="Mark '+esc(u[2])+' done" data-key="'+key+'"'+(on?" checked":"")+'><span class="n">'+u[1]+'</span><a href="'+href+'">'+esc(u[2])+'</a></li>';
+    });
+    h+='</ul><div><div class="prog"><span>Progress</span><span class="pc"></span></div><div class="bar"><i></i></div></div>';
+    h+='<div class="quick">'+s.q.map(function(q){return '<a'+(q[2]?' class="hot"':'')+' href="'+s.f+'#'+q[0]+'">'+q[1]+'</a>'}).join("")+'</div>';
+    el.innerHTML=h;grid.appendChild(el);prog(el);
+  });
+  var up=order.filter(function(s){var n=days(s.d);return n!==null&&n>=0});
+  var nx=document.getElementById("next");
+  nx.innerHTML=up.length?up.slice(0,3).map(function(s){return '<span class="pill"><b>'+esc(s.t)+'</b> &middot; '+cdText(days(s.d))+'</span>'}).join(""):'<span class="pill">Add your exam dates on each card to see a countdown here.</span>';
+}
+function prog(card){var b=card.querySelectorAll(".units input"),n=0;b.forEach(function(x){if(x.checked)n++});var p=Math.round(100*n/b.length);card.querySelector(".bar i").style.width=p+"%";card.querySelector(".pc").textContent=n+" of "+b.length+" · "+p+"%"}
+grid.addEventListener("change",function(e){var t=e.target;
+  if(t.dataset.key){put(t.dataset.key,t.checked?"1":"0");t.closest("li").classList.toggle("done",t.checked);prog(t.closest(".card"))}
+  if(t.dataset.k){put("hub-date-"+t.dataset.k,t.value);render()}
+});
+render();
+</script>
+<noscript><p style="padding:16px">Guides: <a href="06-strategic-financial-management.html">SFM</a> · <a href="01-bond-market-operations-and-analytics.html">BMOA</a> · <a href="02-security-analysis-and-portfolio-management.html">SAPM</a> · <a href="03-sustainable-finance.html">Sustainable Finance</a> · <a href="04-taxation-laws-and-practice.html">Taxation</a></p></noscript>
+</body>
+</html>
